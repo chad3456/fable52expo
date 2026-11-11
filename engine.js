@@ -635,6 +635,13 @@
     const g = oc.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.5, w / 2, h / 2, Math.hypot(w, h) * 0.62); g.addColorStop(0, 'rgba(30,16,40,0)'); g.addColorStop(1, 'rgba(30,16,40,0.3)'); oc.fillStyle = g; oc.fillRect(0, 0, w, h);
   }
 
+  // draw a scene's flat reference canvas at its own size, without the brush pass
+  function compose(scene, seedShift) {
+    const w0 = W, h0 = H; W = scene.w || 2000; H = scene.h || 860;
+    const ref = document.createElement('canvas'); ref.width = W; ref.height = H; const ctx = ref.getContext('2d');
+    scene.draw(new Painter(ctx, (scene.seed || 7) + (seedShift || 0), scene.light || -1));
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; W = w0; H = h0; return ref;
+  }
   function render(scene, out, seedShift) {
     W = scene.w || 2000; H = scene.h || 860;
     const ref = document.createElement('canvas'); ref.width = W; ref.height = H; out.width = W; out.height = H;
@@ -642,8 +649,9 @@
     scene.draw(new Painter(ctx, seed, scene.light || -1));
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
     if (scene.ram && root.Epic.textPaint) root.Epic.textPaint(ref, out, seed, scene.ram); else paint(ref, out, seed, scene.paint);
+    if (scene.after) { const oc = out.getContext('2d'); oc.setTransform(1, 0, 0, 1, 0, 0); oc.globalAlpha = 1; scene.after(oc, W, H); }
     return out;
   }
 
-  root.Epic = { W: W, H: H, Painter: Painter, paint: paint, render: render, mix: mix, lite: lite, dark: dark, css: css, scenes: {} };
+  root.Epic = { compose: compose, W: W, H: H, Painter: Painter, paint: paint, render: render, mix: mix, lite: lite, dark: dark, css: css, scenes: {} };
 })(typeof window !== 'undefined' ? window : globalThis);

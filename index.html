@@ -44,7 +44,7 @@
 <body>
 <header>
   <h1>Itihasa</h1>
-  <p>The Ramayana and the Mahabharata in 102 pictures: fifty wide scenes, sixteen portraits of Rama and Krishna, five further Krishna landscapes, twelve scenes of the churning of the ocean, four studies of the Vishvarupa, and fifteen Ramayana scenes written entirely in the word राम. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
+  <p>The Ramayana and the Mahabharata in 152 pictures: fifty wide scenes, sixteen portraits of Rama and Krishna, five further Krishna landscapes, fifty Ramayana posters of Rama and Sita, twelve scenes of the churning of the ocean, four studies of the Vishvarupa, and fifteen Ramayana scenes written entirely in the word राम. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
   <p><a href="podcast.html" style="color:#f0c66a">Listen to Samvada, the four-part conversation on Rama and Krishna</a> &nbsp;&middot;&nbsp; <a href="video.html" style="color:#f0c66a">Watch Samudra Manthan, a two-minute film</a></p>
 </header>
 <div class="tabs" id="tabs"></div>
@@ -68,9 +68,10 @@
 <script src="portraits.js"></script>
 <script src="special.js"></script>
 <script src="manthan.js"></script>
+<script src="posters.js"></script>
 <script>
 (function () {
-  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes', manthan: 'Samudra Manthan', vishvarupa: 'Vishvarupa', ramnaam: 'Ram-naam: written in \u0930\u093e\u092e' };
+  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes', posters: 'Ramayana posters', manthan: 'Samudra Manthan', vishvarupa: 'Vishvarupa', ramnaam: 'Ram-naam: written in \u0930\u093e\u092e' };
   var epic = location.hash.replace('#', '') in Epic.scenes ? location.hash.replace('#', '') : 'ramayana';
   var idx = 0, timer = null, playing = true, shift = 0;
   var $ = function (id) { return document.getElementById(id); };

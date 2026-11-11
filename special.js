@@ -103,7 +103,7 @@
     for (const r of [330, 430, 540]) { c.strokeStyle = 'rgba(255,240,190,0.4)'; c.lineWidth = 4; c.beginPath(); c.arc(cx, 560, r, 0, 6.3); c.stroke(); }
     // Shesha: seven hoods
     const hc = o.hood || '#4a5a78';
-    for (const i of [-3, 3, -2, 2, -1, 1, 0]) {
+    for (const i of (o.noHood ? [] : [-3, 3, -2, 2, -1, 1, 0])) {
       const a = i * 0.36, hx = cx + Math.sin(a) * 360, hy = 560 - Math.cos(a) * 330 + Math.abs(i) * 18;
       p.tube([[cx + i * 22, 640], [cx + Math.sin(a) * 190, 560 - Math.cos(a) * 150], [hx, hy + 60]], 70, 54, dark(hc, 0.2));
       p.ell(hx, hy, 88, 112, dark(hc, 0.25), 1, a); p.ell(hx + lx * 6, hy - 4, 74, 98, hc, 1, a); p.ell(hx, hy + 14, 50, 72, lite(hc, 0.35), 1, a);
@@ -175,7 +175,7 @@
       face(p, hx, hy, r, h);
     }
     p.ell(cx, 520, 100, 116, '#17131f'); for (const s of [-1, 1]) p.blob([[cx + s * 70, 470], [cx + s * 118, 560], [cx + s * 126, 660], [cx + s * 90, 700], [cx + s * 60, 620]], '#17131f');
-    face(p, cx, 520, 96, { skin: sk, crown: 'mukut', feather: true, tilak: 'U', hair: '#17131f', lips: '#2a3f8a', gem: '#c9342f' });
+    face(p, cx, 520, 96, o.mainFace || { skin: sk, crown: 'mukut', feather: true, tilak: 'U', hair: '#17131f', lips: '#2a3f8a', gem: '#c9342f' });
     c.restore();
   }
   const stars = (p, n, y1) => { for (let i = 0; i < n; i++) { const x = p.rr(0, p.W), y = p.rr(0, y1), r = p.rr(1, 3.6); p.circ(x, y, r, '#fffbe6', p.rr(0.5, 1)); if (r > 3) scr(p, () => p.glow(x, y, 18, '#cfe0ff', 0.8)); } };

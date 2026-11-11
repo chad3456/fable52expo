@@ -270,5 +270,6 @@
       for (let i = 0; i < 160; i++) p.circ(p.rr(0, 2000), p.rr(0, 860), p.rr(1.5, 4), '#ffffff', 0.8);
     } });
 
+  Epic.front.deity = deity; Epic.front.nandi = nandi;
   Epic.scenes.manthan = S;
 })();
