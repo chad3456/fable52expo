@@ -41,7 +41,7 @@ await browser.close()
 for (let i = 0; i < scenes.length; i++) {
   const img = join(root, 'img', 'manthan', String(i + 1).padStart(2, '0') + '.jpg'), fwd = i % 2 === 0, first = i === 0, last = i === scenes.length - 1
   const pan = scenes[i].tall
-    ? `scale=${W * 2}:-2,crop=${W * 2}:${H * 2}:0:'(ih-${H * 2})*${fwd ? `(0.6-0.46*t/${L})` : `(0.14+0.46*t/${L})`}',scale=${W}:${H}`
+    ? `scale=${W * 2}:-2,crop=${W * 2}:${H * 2}:0:'(ih-${H * 2})*${fwd ? `(0.62-0.28*t/${L})` : `(0.34+0.28*t/${L})`}',scale=${W}:${H}`
     : `scale=-2:${H * 2 * 1.06},crop=${W * 2}:${H * 2}:'(iw-${W * 2})*${fwd ? `t/${L}` : `(1-t/${L})`}':'(ih-${H * 2})/2',scale=${W}:${H}`
   const c0 = first ? 4.6 : 0.9, c1 = last ? 5.2 : L - 1.3
   let fc = `[0:v]${pan},fps=${FPS},format=yuv420p[bg];[1:v]format=rgba,fade=in:st=${c0}:d=0.7:alpha=1,fade=out:st=${c1}:d=0.7:alpha=1[cp];[bg][cp]overlay=0:0[v1]`
