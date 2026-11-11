@@ -2,7 +2,7 @@
 // Usage: node scripts/render-epics.mjs [epic] [comma-separated scene numbers]
 import { createRequire } from 'node:module'
 const { chromium } = createRequire(import.meta.url)(process.env.PLAYWRIGHT_PATH || 'playwright')
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -12,8 +12,10 @@ const nums = process.argv[3] ? process.argv[3].split(',').map(Number) : null
 const browser = await chromium.launch()
 const page = await browser.newPage()
 page.on('pageerror', (e) => console.error('page error:', e.message))
-await page.setContent('<canvas id="c"></canvas>')
-for (const f of ['engine.js', 'ramayana.js', 'mahabharata.js', 'portraits.js']) {
+const font = readFileSync(join(root, 'fonts', 'NotoSerifDevanagari-Bold.woff2')).toString('base64')
+await page.setContent('<style>@font-face{font-family:RamNaam;font-weight:700;src:url(data:font/woff2;base64,' + font + ')}</style><canvas id="c"></canvas>')
+await page.evaluate(() => document.fonts.load('700 40px RamNaam', '\u0930\u093e\u092e'))
+for (const f of ['engine.js', 'ramayana.js', 'mahabharata.js', 'portraits.js', 'special.js']) {
   try { await page.addScriptTag({ path: join(root, f) }) } catch (e) { console.error('skip', f, e.message) }
 }
 const epics = await page.evaluate(() => Object.fromEntries(Object.entries(Epic.scenes).map(([k, v]) => [k, v.length])))

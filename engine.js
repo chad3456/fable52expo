@@ -641,7 +641,7 @@
     const ctx = ref.getContext('2d'), seed = (scene.seed || 7) + (seedShift || 0);
     scene.draw(new Painter(ctx, seed, scene.light || -1));
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
-    paint(ref, out, seed, scene.paint);
+    if (scene.ram && root.Epic.textPaint) root.Epic.textPaint(ref, out, seed, scene.ram); else paint(ref, out, seed, scene.paint);
     return out;
   }
 

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itihasa: Painted Epics</title>
 <style>
+  @font-face { font-family: RamNaam; font-weight: 700; src: url(fonts/NotoSerifDevanagari-Bold.woff2) format('woff2'); }
   :root { --bg: #17121f; --ink: #f4ead8; --dim: #b9a9b8; --gold: #f0c66a; --line: #3a2f48; }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
@@ -43,7 +44,7 @@
 <body>
 <header>
   <h1>Itihasa</h1>
-  <p>The Ramayana and the Mahabharata in 71 paintings: fifty wide scenes, sixteen portraits of Rama and Krishna, and five further Krishna landscapes. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
+  <p>The Ramayana and the Mahabharata in 90 pictures: fifty wide scenes, sixteen portraits of Rama and Krishna, five further Krishna landscapes, four studies of the Vishvarupa, and fifteen Ramayana scenes written entirely in the word राम. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
   <p><a href="podcast.html" style="color:#f0c66a">Listen to Samvada, the four-part conversation on Rama and Krishna</a></p>
 </header>
 <div class="tabs" id="tabs"></div>
@@ -65,9 +66,10 @@
 <script src="ramayana.js"></script>
 <script src="mahabharata.js"></script>
 <script src="portraits.js"></script>
+<script src="special.js"></script>
 <script>
 (function () {
-  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes' };
+  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes', vishvarupa: 'Vishvarupa', ramnaam: 'Ram-naam: written in \u0930\u093e\u092e' };
   var epic = location.hash.replace('#', '') in Epic.scenes ? location.hash.replace('#', '') : 'ramayana';
   var idx = 0, timer = null, playing = true, shift = 0;
   var $ = function (id) { return document.getElementById(id); };
@@ -84,7 +86,7 @@
     s.onclick = function () { open(0, true); }; $('tabs').appendChild(s);
   }
   function grid() {
-    var g = $('grid'), list = Epic.scenes[epic] || []; g.innerHTML = ''; g.className = list[0] && list[0].h > list[0].w ? 'tall' : '';
+    var g = $('grid'), list = Epic.scenes[epic] || []; g.innerHTML = ''; g.className = list.length && list.every(function (q) { return q.h > q.w; }) ? 'tall' : '';
     if (!list.length) { g.innerHTML = '<p class="empty">These paintings are not ready yet.</p>'; return; }
     list.forEach(function (sc, i) {
       var f = document.createElement('figure'); f.tabIndex = 0;
@@ -113,6 +115,7 @@
     if (!$('show').classList.contains('on')) return;
     if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
   });
+  if (document.fonts && document.fonts.load) document.fonts.load('700 40px RamNaam', '\u0930\u093e\u092e');
   tabs(); grid();
 })();
 </script>

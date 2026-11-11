@@ -1,6 +1,6 @@
 # Itihasa: Painted Epics
 
-The Ramayana and the Mahabharata in 71 paintings, with Samvada, a four-part narrated conversation on Rama, Krishna and dharma. Everything is plain HTML and JavaScript with no libraries; open `index.html` from any static server.
+The Ramayana and the Mahabharata in 90 pictures, with Samvada, a four-part narrated conversation on Rama, Krishna and dharma. Everything is plain HTML and JavaScript with no libraries; open `index.html` from any static server.
 
 ## Paintings (`img/`)
 
@@ -11,8 +11,10 @@ The Ramayana and the Mahabharata in 71 paintings, with Samvada, a four-part narr
 | `img/rama/` | 8 portraits of Rama | 1200×1800 |
 | `img/krishna/` | 8 portraits of Krishna | 1200×1800 |
 | `img/krishnaland/` | 5 further Krishna landscapes | 2000×860 |
+| `img/vishvarupa/` | 4 detailed studies of Krishna's universal form: front-facing, with the many faces, twelve arms and their attributes, and Shesha's seven hoods | 1200×1800 and 2000×860 |
+| `img/ramnaam/` | 15 Ramayana pictures written with nothing but the word राम, repeated at five sizes | mixed |
 
-Titles and captions for each painting are in `ramayana.js`, `mahabharata.js` and `portraits.js`, in the same order as the numbered files.
+Titles and captions for each painting are in `ramayana.js`, `mahabharata.js`, `portraits.js` and `special.js`, in the same order as the numbered files.
 
 ## Pages
 
@@ -28,6 +30,8 @@ To render every JPEG again (needs Node and Playwright):
 ```bash
 PLAYWRIGHT_PATH=$(npm root -g)/playwright node scripts/render-epics.mjs all
 ```
+
+The Ram-naam pictures use Noto Serif Devanagari (SIL Open Font License, see `fonts/OFL.txt`).
 
 ## Sources and caveats
 
