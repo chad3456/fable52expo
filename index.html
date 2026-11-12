@@ -44,7 +44,7 @@
 <body>
 <header>
   <h1>Itihasa</h1>
-  <p>The Ramayana and the Mahabharata in 169 pictures: fifty wide scenes, sixteen portraits of Rama and Krishna, five further Krishna landscapes, seventeen portraits of India and its epic capitals, fifty Ramayana posters of Rama and Sita, twelve scenes of the churning of the ocean, four studies of the Vishvarupa, and fifteen Ramayana scenes written entirely in the word राम. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
+  <p>The Ramayana and the Mahabharata in 213 pictures: fifty wide scenes, sixteen portraits of Rama and Krishna, five further Krishna landscapes, forty-four shadow-cinema film frames (including the eighteen days of Kurukshetra, one per day), seventeen portraits of India and its epic capitals, fifty Ramayana posters of Rama and Sita, twelve scenes of the churning of the ocean, four studies of the Vishvarupa, and fifteen Ramayana scenes written entirely in the word राम. Every picture is drawn by code: a plain JavaScript engine composes each scene, then repaints it stroke by stroke.</p>
   <p><a href="podcast.html" style="color:#f0c66a">Listen to Samvada, the four-part conversation on Rama and Krishna</a> &nbsp;&middot;&nbsp; <a href="video.html" style="color:#f0c66a">Watch Samudra Manthan, a two-minute film</a> &nbsp;&middot;&nbsp; <a href="trimurti.html" style="color:#f0c66a">Trimurti, live shader</a></p>
 </header>
 <div class="tabs" id="tabs"></div>
@@ -70,9 +70,10 @@
 <script src="manthan.js"></script>
 <script src="posters.js"></script>
 <script src="bharat.js"></script>
+<script src="chhaya.js"></script>
 <script>
 (function () {
-  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes', bharat: 'Bharat: portraits of India', posters: 'Ramayana posters', manthan: 'Samudra Manthan', vishvarupa: 'Vishvarupa', ramnaam: 'Ram-naam: written in \u0930\u093e\u092e' };
+  var names = { ramayana: 'Ramayana', mahabharata: 'Mahabharata', rama: 'Rama: portraits', krishna: 'Krishna: portraits', krishnaland: 'Krishna: landscapes', chhaya: 'Chhaya: shadow cinema', bharat: 'Bharat: portraits of India', posters: 'Ramayana posters', manthan: 'Samudra Manthan', vishvarupa: 'Vishvarupa', ramnaam: 'Ram-naam: written in \u0930\u093e\u092e' };
   var epic = location.hash.replace('#', '') in Epic.scenes ? location.hash.replace('#', '') : 'ramayana';
   var idx = 0, timer = null, playing = true, shift = 0;
   var $ = function (id) { return document.getElementById(id); };
