@@ -15,7 +15,7 @@ page.on('pageerror', (e) => console.error('page error:', e.message))
 const font = readFileSync(join(root, 'fonts', 'NotoSerifDevanagari-Bold.woff2')).toString('base64')
 await page.setContent('<style>@font-face{font-family:RamNaam;font-weight:700;src:url(data:font/woff2;base64,' + font + ')}</style><canvas id="c"></canvas>')
 await page.evaluate(() => document.fonts.load('700 40px RamNaam', '\u0930\u093e\u092e'))
-for (const f of ['engine.js', 'ramayana.js', 'mahabharata.js', 'portraits.js', 'special.js', 'manthan.js', 'posters.js', 'bharat.js', 'chhaya.js']) {
+for (const f of ['engine.js', 'ramayana.js', 'mahabharata.js', 'portraits.js', 'special.js', 'manthan.js', 'posters.js', 'bharat.js', 'chhaya.js', 'siam.js']) {
   try { await page.addScriptTag({ path: join(root, f) }) } catch (e) { console.error('skip', f, e.message) }
 }
 const epics = await page.evaluate(() => Object.fromEntries(Object.entries(Epic.scenes).map(([k, v]) => [k, v.length])))
