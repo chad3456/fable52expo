@@ -1,6 +1,6 @@
 # Itihasa: Painted Epics
 
-The Ramayana and the Mahabharata in 152 pictures, with Samvada, a four-part narrated conversation on Rama, Krishna and dharma. Everything is plain HTML and JavaScript with no libraries; open `index.html` from any static server.
+The Ramayana and the Mahabharata in 169 pictures, with Samvada, a four-part narrated conversation on Rama, Krishna and dharma. Everything is plain HTML and JavaScript with no libraries; open `index.html` from any static server.
 
 ## Paintings (`img/`)
 
@@ -11,12 +11,13 @@ The Ramayana and the Mahabharata in 152 pictures, with Samvada, a four-part narr
 | `img/rama/` | 8 portraits of Rama | 1200×1800 |
 | `img/krishna/` | 8 portraits of Krishna | 1200×1800 |
 | `img/krishnaland/` | 5 further Krishna landscapes | 2000×860 |
+| `img/bharat/` | 17 pictures: the epic capitals (Ayodhya, Mithila, Lanka, Kishkindha, Hastinapura, Indraprastha, Dvaraka), royal India, festivals (Diwali, Holi, Rath Yatra, Ganga aarti), heritage, and `17.jpg`, *Trimurti*, a code recreation of a three-faced divine portrait | mixed |
 | `img/posters/` | 50 Ramayana posters of Rama and Sita in four treatments: front-facing colour icons, carved three-ink woodcut registers with banners, blood-red posters, and ember-on-black | mixed, mostly upright |
 | `img/manthan/` | 12 scenes of Samudra Manthan, the churning of the ocean of milk, and of Shiva as Neelakantha, following Bhagavata Purana 8.5-12 | 2000×860 and 1200×1800 |
 | `img/vishvarupa/` | 4 detailed studies of Krishna's universal form: front-facing, with the many faces, twelve arms and their attributes, and Shesha's seven hoods | 1200×1800 and 2000×860 |
 | `img/ramnaam/` | 15 Ramayana pictures written with nothing but the word राम, repeated at five sizes | mixed |
 
-Titles and captions for each painting are in `ramayana.js`, `mahabharata.js`, `portraits.js`, `special.js`, `manthan.js` and `posters.js`, in the same order as the numbered files.
+Titles and captions for each painting are in `ramayana.js`, `mahabharata.js`, `portraits.js`, `special.js`, `manthan.js`, `posters.js` and `bharat.js`, in the same order as the numbered files.
 
 ## Pages
 
@@ -24,6 +25,8 @@ Titles and captions for each painting are in `ramayana.js`, `mahabharata.js`, `p
 - `podcast.html`: Samvada. Four two-voice episodes with a source shown for every turn. Narration uses the device's speech voices; the tanpura drone is synthesised.
 
 - `video.html` and `video/samudra-manthan.mp4`: a two-minute film of the Samudra Manthan story (1920×1080) cut from the paintings, with captions and a synthesised drone, bell and conch. There is no spoken narration. Rebuild it with `PLAYWRIGHT_PATH=$(npm root -g)/playwright node scripts/make-video.mjs` (needs ffmpeg).
+
+- `trimurti.html`: the Trimurti painting animated by a WebGL fragment shader (flowing aura, a pulsing pool of light, a sweep of highlight). The still itself is lit by a software shader in `bharat.js` (relief lighting from the luminance gradient, then bloom).
 
 ## How the pictures are made
 
